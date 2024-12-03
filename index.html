@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Follow The Block</title>
+</head>
+<body>
+    <div class="container mx-auto">
+        <dialog id="gameover" class="modal">
+        <div class="modal-box">
+            <h3 class="text-4xl font-bold text-center">Game Over!</h3>
+            <p class="text-center text-2xl mt-6">You clicked <span id="clicksCount" class="text-blue-300"></span> times</p>
+            <div class="modal-action flex justify-center">
+            <form method="dialog">
+                <button class="btn text-lg">Hurray!</button>
+            </form>
+            </div>
+        </div>
+        </dialog>
+
+        <h1 class="text-center text-4xl font-bold mt-10"><i class="fa-regular fa-hand-pointer text-blue-400"></i> Follow The Block</h1>
+        <div class="flex justify-center w-full mt-5">
+            <div class="stats stats-vertical md:stats-horizontal lg:stats-horizontal">
+                <div class="stat">
+                <div class="stat-figure text-primary">
+                    <i class="fa-solid fa-arrow-pointer text-4xl"></i>
+                </div>
+                <div class="stat-title">Total Clicks</div>
+                <div class="stat-value text-primary" id="totalClicks">0</div>
+                <div class="stat-desc">Total clicks during this session</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-figure text-secondary">
+                        <i class="fa-solid fa-star text-4xl"></i>
+                    </div>
+                    <div class="stat-title">High Score</div>
+                    <div class="stat-value text-secondary" id="highScore">0</div>
+                    <div class="stat-desc">Your clicks high score</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-figure text-accent">
+                        <i class="fa-solid fa-gamepad text-4xl"></i>
+                    </div>
+                    <div class="stat-title">Current Clicks</div>
+                    <div class="stat-value text-accent" id="currentClicks">0</div>
+                    <div class="stat-desc">Your clicks during this round</div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full flex justify-center">
+            <div class="mt-5">
+                <button type="button" class="shadow-xl bg-blue-500 hover:bg-green-500 hover:shadow-green-500/50 btn btn-ghost rounded-xl text-white font-bold text-xl" onclick="startGame()" id="startButton"><i class="fa-solid fa-play" id="statusIcon"></i> <span id="statusText">Start Game</span></button>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 grid-rows-3 w-full h-full mt-[40px] mb-5 px-6">
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+            <div class="card bg-base-100 w-full object" onclick="elementClicked(this)">
+                <div class="card-body place-content-center grid grid-cols-1 text-center">
+                    <p class="text-base-100 text-xl md:text-2xl lg:text-3xl object-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
