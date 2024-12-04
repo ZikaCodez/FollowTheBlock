@@ -159,7 +159,6 @@ function endGame() {
 
     countdown = 0
 
-    currentClicksShow.innerText = clicks
     totalClicksShow.innerText = totalClicks
     
     switchButton()
