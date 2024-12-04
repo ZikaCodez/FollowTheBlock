@@ -37,7 +37,7 @@ function updateElementStyle(element, mode) {
     if (mode === "active") {
         element.classList.remove(inactiveClass)
         element.classList.add(activeClass)
-        element.getElementsByClassName("object-text")[0].innerText = "Click"
+        element.getElementsByClassName("object-text")[0].innerText = "👆"
     } else {
         element.classList.remove(activeClass)
         element.classList.add(inactiveClass)
