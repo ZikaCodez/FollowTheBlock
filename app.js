@@ -17,8 +17,6 @@ let gameStarted = false;
 let lastElement = null;
 let randomElement = null;
 
-let clickIcon = 'fa-arrow-pointer'
-
 let activeClass = "bg-base-300";
 let inactiveClass = "bg-base-100";
 
