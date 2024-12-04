@@ -4,6 +4,7 @@ const elements = document.querySelectorAll('.object');
 let startButton = document.getElementById("startButton")
 let statusIcon = document.getElementById("statusIcon")
 let statusText = document.getElementById("statusText")
+let timeLeft = document.getElementById("timeLeft")
 
 let clicksCount = document.getElementById("clicksCount")
 let highScoreShow = document.getElementById("highScore")
@@ -17,9 +18,13 @@ let randomElement = null;
 let activeClass = "bg-blue-300";
 let inactiveClass = "bg-base-100";
 
+let activeButton = "bg-blue-500"
+let inactiveButton = "bg-base-100"
+
 let clicks = 0;
 let totalClicks = 0;
 let highScore = 0;
+let countdown = 60
 
 function getRandomElement() {
     return elements[Math.floor(Math.random() * elements.length)];
@@ -61,30 +66,30 @@ function elementClicked(event) {
 function switchButton() {
 
     if (statusText.innerText === "Start Game") {
-        startButton.classList.remove("bg-blue-500")
+        startButton.classList.remove(activeButton)
         startButton.classList.remove("hover:bg-green-500")
         startButton.classList.remove("hover:shadow-green-500/50")
-        startButton.classList.add("bg-red-500")
+        startButton.classList.add(inactiveButton)
         startButton.classList.add("hover:bg-red-800")
         startButton.classList.add("hover:shadow-red-500/50")
-
-        statusText.innerText = "Stop Game"
+        startButton.classList.remove("cursor-disabled")
         
-        startButton.setAttribute("onclick", "endGame()")
+        statusText.innerText = "Game Started"
+
+        startButton.setAttribute("disabled", "disabled")
 
         statusIcon.classList.remove("fa-play")
         statusIcon.classList.add("fa-pause")
     } else {
-        startButton.classList.remove("bg-red-500")
+        startButton.classList.remove(inactiveButton)
         startButton.classList.remove("hover:bg-red-800")
         startButton.classList.remove("hover:shadow-red-500/50")
-        startButton.classList.add("bg-blue-500")
-        startButton.classList.add("hover:bg-green-500")
-        startButton.classList.add("hover:shadow-green-500/50")
+        startButton.classList.add(activeButton)
+        startButton.classList.add("cursor-disabled")
 
         statusText.innerText = "Start Game"
 
-        startButton.setAttribute("onclick", "startGame()")
+        startButton.removeAttribute("disabled")
 
         statusIcon.classList.remove("fa-pause")
         statusIcon.classList.add("fa-play")
@@ -92,9 +97,30 @@ function switchButton() {
 }
 
 function startGame() {
+    startCountdown();
     randomElement = getRandomElement();
     updateElementStyle(randomElement, "active")
     switchButton()
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+function startCountdown() {
+    timeLeft.innerText = `Time left: ${countdown}s`;
+    let countdownInterval = setInterval(() => {
+        if (countdown > 0) {
+            countdown--;
+            timeLeft.innerText = `Time left: ${countdown}s`;
+        } else {
+            clearInterval(countdownInterval);
+            endGame();
+            endCountdown()
+        }
+    }, 1000);
+}
+
+function endCountdown() {
+    countdown = 30
+    timeLeft.innerText = "";
 }
 
 function endGame() {
