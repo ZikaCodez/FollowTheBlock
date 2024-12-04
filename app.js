@@ -37,7 +37,7 @@ function updateElementStyle(element, mode) {
     if (mode === "active") {
         element.classList.remove(inactiveClass)
         element.classList.add(activeClass)
-        element.getElementsByClassName("object-text")[0].innerText = "👆"
+        element.getElementsByClassName("object-text")[0].innerText = "Click"
     } else {
         element.classList.remove(activeClass)
         element.classList.add(inactiveClass)
@@ -88,7 +88,7 @@ function switchButton() {
         startButton.classList.add("hover:bg-red-800")
         startButton.classList.add("hover:shadow-red-500/50")
         
-        statusText.innerText = "Stop Started"
+        statusText.innerText = "Stop Game"
         
         startButton.setAttribute("onclick", "endGame()")
 
