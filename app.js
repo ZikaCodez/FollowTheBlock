@@ -17,7 +17,9 @@ let gameStarted = false;
 let lastElement = null;
 let randomElement = null;
 
-let activeClass = "bg-blue-300";
+let clickIcon = 'fa-arrow-pointer'
+
+let activeClass = "bg-base-300";
 let inactiveClass = "bg-base-100";
 
 let activeButton = "bg-blue-500"
@@ -38,7 +40,7 @@ function updateElementStyle(element, mode) {
     if (mode === "active") {
         element.classList.remove(inactiveClass)
         element.classList.add(activeClass)
-        element.getElementsByClassName("object-text")[0].innerText = "Click me!"
+        element.getElementsByClassName("object-text")[0].innerText = "👆"
     } else {
         element.classList.remove(activeClass)
         element.classList.add(inactiveClass)
