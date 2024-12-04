@@ -12,6 +12,8 @@ let currentClicksShow = document.getElementById("currentClicks")
 let totalClicksShow = document.getElementById("totalClicks")
 
 // Data Variables
+let gameStarted = false;
+
 let lastElement = null;
 let randomElement = null;
 
@@ -19,7 +21,7 @@ let activeClass = "bg-blue-300";
 let inactiveClass = "bg-base-100";
 
 let activeButton = "bg-blue-500"
-let inactiveButton = "bg-base-100"
+let inactiveButton = "bg-red-600"
 
 let clicks = 0;
 let totalClicks = 0;
@@ -44,6 +46,18 @@ function updateElementStyle(element, mode) {
     }
 }
 
+function setTimer(element, time) {
+    const timerElements = document.querySelectorAll('#timers .timer');
+    timerElements.forEach(timerElement => {
+        timerElement.classList.remove("bg-yellow-500", "text-gray-800", "hover:bg-yellow-600");
+        timerElement.classList.add("bg-blue-600", "text-white");
+    });
+    setCountdown = time
+    countdown = setCountdown
+    element.classList.remove("bg-blue-600", "text-white")
+    element.classList.add("bg-yellow-500", "text-gray-800", "hover:bg-yellow-600")
+}
+
 function updateRandomElement(oldElement) {
     updateElementStyle(oldElement, "inactive")
     randomElement = getRandomElement();
@@ -55,6 +69,7 @@ function updateRandomElement(oldElement) {
 }
 
 function elementClicked(event) {
+    if (!gameStarted) return;
     if (event === randomElement) {
         lastElement = randomElement;
         randomElement = updateRandomElement(lastElement);
@@ -74,11 +89,10 @@ function switchButton() {
         startButton.classList.add(inactiveButton)
         startButton.classList.add("hover:bg-red-800")
         startButton.classList.add("hover:shadow-red-500/50")
-        startButton.classList.remove("cursor-disabled")
         
-        statusText.innerText = "Game Started"
-
-        startButton.setAttribute("disabled", "disabled")
+        statusText.innerText = "Stop Started"
+        
+        startButton.setAttribute("onclick", "endGame()")
 
         statusIcon.classList.remove("fa-play")
         statusIcon.classList.add("fa-pause")
@@ -87,11 +101,10 @@ function switchButton() {
         startButton.classList.remove("hover:bg-red-800")
         startButton.classList.remove("hover:shadow-red-500/50")
         startButton.classList.add(activeButton)
-        startButton.classList.add("cursor-disabled")
 
         statusText.innerText = "Start Game"
 
-        startButton.removeAttribute("disabled")
+        startButton.setAttribute("onclick", "startGame()")
 
         statusIcon.classList.remove("fa-pause")
         statusIcon.classList.add("fa-play")
@@ -104,6 +117,7 @@ function startGame() {
     updateElementStyle(randomElement, "active")
     switchButton()
     window.scrollTo(0, document.body.scrollHeight);
+    gameStarted = true;
 }
 
 function startCountdown() {
@@ -127,6 +141,7 @@ function endCountdown() {
 }
 
 function endGame() {
+    gameStarted = false;
     updateElementStyle(randomElement, "inactive")
 
     randomElement = null;

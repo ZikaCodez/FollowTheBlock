@@ -55,6 +55,12 @@
                 </div>
             </div>
         </div>
+        <p class="m-5 text-center text-lg">Set Timer</p>
+        <div class="mt-3 grid grid-cols-3 w-1/4 mx-auto gap-4" id="timers">
+            <button class="btn bg-yellow-500 text-gray-800 hover:bg-yellow-600 text-lg timer" onclick="setTimer(this, 10)">10s</button>
+            <button class="btn bg-blue-600 text-white text-lg timer" onclick="setTimer(this, 20)">20s</button>
+            <button class="btn bg-blue-600 text-white text-lg timer" onclick="setTimer(this, 30)">30s</button>
+        </div>
         <div class="w-full flex justify-center">
             <div class="mt-5">
                 <button type="button" class="shadow-xl bg-blue-500 hover:bg-green-500 hover:shadow-green-500/50 btn btn-ghost rounded-xl text-white font-bold text-xl" onclick="startGame()" id="startButton"><i class="fa-solid fa-play" id="statusIcon"></i> <span id="statusText">Start Game</span></button>
