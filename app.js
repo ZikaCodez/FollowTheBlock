@@ -24,7 +24,9 @@ let inactiveButton = "bg-base-100"
 let clicks = 0;
 let totalClicks = 0;
 let highScore = 0;
-let countdown = 60
+let setCountdown = 10
+
+let countdown = setCountdown
 
 function getRandomElement() {
     return elements[Math.floor(Math.random() * elements.length)];
@@ -106,20 +108,21 @@ function startGame() {
 
 function startCountdown() {
     timeLeft.innerText = `Time left: ${countdown}s`;
-    let countdownInterval = setInterval(() => {
+    function countdownTimer() {
         if (countdown > 0) {
             countdown--;
             timeLeft.innerText = `Time left: ${countdown}s`;
+            setTimeout(countdownTimer, 1000);
         } else {
-            clearInterval(countdownInterval);
+            endCountdown();
             endGame();
-            endCountdown()
         }
-    }, 1000);
+    }
+    countdownTimer();
 }
 
 function endCountdown() {
-    countdown = 30
+    countdown = setCountdown
     timeLeft.innerText = "";
 }
 
@@ -140,6 +143,8 @@ function endGame() {
     }
 
     clicks = 0;
+
+    countdown = 0
 
     currentClicksShow.innerText = clicks
     totalClicksShow.innerText = totalClicks
