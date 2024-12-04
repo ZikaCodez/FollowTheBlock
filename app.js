@@ -8,7 +8,6 @@ let timeLeft = document.getElementById("timeLeft")
 
 let clicksCount = document.getElementById("clicksCount")
 let highScoreShow = document.getElementById("highScore")
-let currentClicksShow = document.getElementById("currentClicks")
 let totalClicksShow = document.getElementById("totalClicks")
 
 // Data Variables
@@ -74,7 +73,6 @@ function elementClicked(event) {
         lastElement = randomElement;
         randomElement = updateRandomElement(lastElement);
         clicks += 1;
-        currentClicksShow.innerText = clicks
     } else {
         endGame()
     }
