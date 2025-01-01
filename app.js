@@ -58,7 +58,12 @@ function setTimer(element, time) {
 }
 
 function updateRandomElement(oldElement) {
-    updateElementStyle(oldElement, "inactive")
+    oldElement.style.transition = "opacity 0.5s";
+    oldElement.style.opacity = "0";
+    setTimeout(() => {
+        oldElement.style.opacity = "1";
+        updateElementStyle(oldElement, "inactive");
+    }, 200);
     randomElement = getRandomElement();
     while (randomElement === oldElement) {
         randomElement = getRandomElement();
